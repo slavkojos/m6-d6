@@ -1,0 +1,71 @@
+CREATE TABLE IF NOT EXISTS
+    students(
+        student_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+      	name VARCHAR(50) NOT NULL,
+      	last_name VARCHAR(50) NOT NULL,
+      	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        );
+
+INSERT INTO students(name,last_name) VALUES('Gentrit','Begaj');
+INSERT INTO students(name,last_name) VALUES('Slavko','Josipovic');
+INSERT INTO students(name,last_name) VALUES('Luca','Perullo');
+INSERT INTO students(name,last_name) VALUES('Ardi','Germenji');
+INSERT INTO students(name,last_name) VALUES('Jamie','Ellis');
+INSERT INTO students(name,last_name) VALUES('Hüseyin Can','Soylu');
+INSERT INTO students(name,last_name) VALUES('Hafiz','Ali');
+INSERT INTO students(name,last_name) VALUES('Juan','Arana');
+INSERT INTO students(name,last_name) VALUES('Mihai','Ivanov');
+INSERT INTO students(name,last_name) VALUES('David','Zapata');
+INSERT INTO students(name,last_name) VALUES('Paul','Balu');
+INSERT INTO students(name,last_name) VALUES('Sean','Knowles');
+
+CREATE TABLE IF NOT EXISTS
+    tutors(
+        tutor_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+      	name VARCHAR(50) NOT NULL,
+      	last_name VARCHAR(50) NOT NULL,
+		country VARCHAR(30) NOT NULL,
+      	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        );
+		
+CREATE TABLE IF NOT EXISTS
+    modules	(
+        module_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY ,
+      	name VARCHAR(50) NOT NULL,
+      	type VARCHAR(10) NOT NULL,
+		topic VARCHAR(40) NOT NULL,
+      	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        );
+		
+INSERT INTO tutors(name,last_name,country) VALUES('Diego','Banovaz','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Riccardo','Gulin','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Stefano','Cassasola','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Stefano','Micelli','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Luis','Antonio','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Tetiana','Yaremko','Ukraine');
+INSERT INTO tutors(name,last_name,country) VALUES('Danielle','Banovaz','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Alessia','Luminari','Italy');
+INSERT INTO tutors(name,last_name,country) VALUES('Ubeyt','Demir','Turkey');
+
+INSERT INTO modules(name,type,topic) VALUES('Javascript','Frontend','Javascript intro');
+INSERT INTO modules(name,type,topic) VALUES('Bootstrap','Frontend','Bootstrap v4.6');
+INSERT INTO modules(name,type,topic) VALUES('Advanced Javascript','Frontend','Javascript advanced stuff');
+INSERT INTO modules(name,type,topic) VALUES('React.js','Frontend','React framework');
+INSERT INTO modules(name,type,topic) VALUES('Node.js','Backend','Node.js stuff');
+INSERT INTO modules(name,type,topic) VALUES('Databases','Backend','Mongo and postgres');
+
+
+	
+SELECT * FROM modules WHERE topic LIKE '%Javascript%';
+
+SELECT (name,last_name) FROM tutors WHERE country = 'Italy';
+
+SELECT (name,last_name) FROM students WHERE name LIKE '%uan%';
+
+SELECT (name,last_name) FROM tutors WHERE (country = 'Italy' OR country= 'Ukraine');
+
+SELECT (name,type) FROM modules WHERE type='Frontend';
+
+
+		
+		
